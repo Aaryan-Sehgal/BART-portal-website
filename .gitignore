@@ -1,0 +1,11 @@
+.env
+node_mudules/
+__pycache__/
+*.log
+.DS_Store
+.vscode/
+.idea/
+dist/
+build/
+*.pyc
+*.pyo

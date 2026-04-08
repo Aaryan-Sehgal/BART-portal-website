@@ -1,0 +1,34 @@
+#hero {
+    width: 100%;
+    height: 91vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(25%);
+}
+
+#hero-text {
+    position: absolute;
+    text-align: center;
+    transform: translate(0, -15%);
+    color: rgb(255, 255, 255);
+}
+
+#hero-text h1 {
+    font-size: 150pt;
+    font-weight: 900;
+    line-height: 0.9;
+}
+
+#hero-text h2 {
+    color: rgb(199, 199, 199);
+    font-size: 30pt;
+    font-weight: 600;
+    font-style: italic;
+}

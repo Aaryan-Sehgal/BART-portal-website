@@ -1,0 +1,141 @@
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1000px;
+}
+
+/* PLATFORM DISPLAY */
+#platform-display {
+    width: 1000px;
+    height: 350px;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgb(0, 0, 0);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+#platform-display-top {
+    height: 0px;
+    background: rgb(0, 0, 0);
+    border-radius: 6px 6px 0 0;
+    margin-bottom: 12px;
+}
+
+#platform-display-screen {
+    padding: 18px;
+    height: 80%;
+    border-radius: 6px;
+    background: rgb(6, 7, 11);
+    display: flex;
+    align-items: stretch;
+}
+
+/* > PLATFORM DEPARTURES */
+#platform-display-departures {
+    flex: 6;
+    background-color: rgb(21, 52, 83);
+    background: radial-gradient(circle at 50% 50%, rgb(30, 69, 108), rgb(21, 52, 83) 75%, rgb(21, 52, 83) 100%);
+    padding: 25px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.departure-row {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.departure-text {
+    color: rgb(210, 230, 255);
+    display: flex;
+    flex-direction: column;
+}
+
+.departure-text .departure-destination {
+    font-size: 30pt;
+    font-weight: 600;
+}
+
+.departure-text .departure-minutes {
+    font-size: 20pt;
+    font-weight: 600;
+}
+
+.departure-minutes-label {
+    font-size: 10pt;
+}
+
+.departure-cars {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+}
+
+.car-box {
+    width: 40px;
+    height: 10px;
+    background-color: rgb(255, 255, 255);
+}
+
+/* > PLATFORM DIVIDER */
+#platform-display-divider {
+    width: 20px;
+    flex-shrink: 0;
+    background-color: rgb(0, 0, 0);
+}
+
+/* > PLATFORM ANNOUNCEMENTS */
+#platform-display-announcements {
+    flex: 6;
+    background-color: rgb(38, 105, 173);
+}
+
+#platform-display-announcements-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: rgb(38, 105, 173);
+    background-color: rgb(210, 230, 255);
+    padding: 10px 10px;
+}
+
+#announcement-header {
+    font-size: 16pt;
+    font-weight: 600;
+}
+
+#platform-display-announcements-body {
+    padding: 10px 10px;
+    font-size: 15pt;
+    font-weight: 700;
+    color: rgb(210, 230, 255);
+}
+
+/* > PLATFORM DISPLAY */
+#platform-display-label {
+    color: rgb(246, 243, 222);
+}
+
+/* LINE COLORS */
+.car-box.blue-line {
+    background-color: #0099d8;
+}
+
+.car-box.yellow-line {
+    background-color: #f1de0a;
+}
+
+.car-box.green-line {
+    background-color: #4eb646;
+}
+
+.car-box.red-line {
+    background-color: #ee1a22;
+}
+
+.car-box.orange-line {
+    background-color: #fca716;
+}

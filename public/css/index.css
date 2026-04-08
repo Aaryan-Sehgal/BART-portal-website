@@ -18,6 +18,7 @@
     text-align: center;
     transform: translate(0, -15%);
     color: rgb(255, 255, 255);
+    text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
 }
 
 #hero-text h1 {
@@ -27,8 +28,8 @@
 }
 
 #hero-text h2 {
-    color: rgb(199, 199, 199);
-    font-size: 30pt;
+    color: rgb(237, 237, 237);
+    font-size: 35pt;
     font-weight: 600;
     font-style: italic;
 }

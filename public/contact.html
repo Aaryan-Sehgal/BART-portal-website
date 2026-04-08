@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us Form</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f3f3f3;
+            color: #333;
+        }
+
+        .form-wrapper {
+            max-width: 900px;
+            margin: 24px auto;
+            padding: 0 16px;
+        }
+
+        .contact-form {
+            background: #f3f3f3;
+            padding: 8px 12px 24px;
+        }
+
+        .contact-form h2 {
+            margin: 0 0 18px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px 12px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #444;
+        }
+
+        .required {
+            color: red;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px 12px;
+            font-size: 14px;
+            border: 1px solid #d8d8d8;
+            background: #fff;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #999;
+        }
+
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        @media (max-width: 700px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .ad-panel {
+            position: fixed;
+            top: 120px;
+            right: -220px;
+            /* hidden */
+            width: 200px;
+            background: white;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: right 0.5s ease;
+            border-radius: 10px 0 0 10px;
+        }
+
+        .ad-panel.show {
+            right: 0;
+            /* slides in */
+        }
+
+        .ad-panel img {
+            width: 100%;
+            border-radius: 6px;
+        }
+    </style>
+    <nav style="display: flex; justify-content: space-between; padding: 16px; background-color: black; color: white;">
+        <a href="index.html">BartNET</a>
+        <a href="RTD.html">Real-Time Departures</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">About Us</a>
+
+        <div class="account">
+            <a href="Account.html">
+                <img src="images/profile.png">
+                <span>My Account / Sign In</span>
+            </a>
+        </div>
+
+    </nav>
+</head>
+
+<body>
+    <div class="form-wrapper">
+        <form class="contact-form">
+            <h2>Contact Us</h2>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="firstName">First Name: <span class="required">*</span></label>
+                    <input type="text" id="firstName" name="firstName" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Last Name: <span class="required">*</span></label>
+                    <input type="text" id="lastName" name="lastName" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="company">Company/Building:</label>
+                    <input type="text" id="company" name="company" />
+                </div>
+
+                <div class="form-group">
+                    <label for="address1">Address Line 1: <span class="required">*</span></label>
+                    <input type="text" id="address1" name="address1" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="address2">Address Line 2:</label>
+                    <input type="text" id="address2" name="address2" />
+                </div>
+
+                <div class="form-group">
+                    <label for="city">City: <span class="required">*</span></label>
+                    <input type="text" id="city" name="city" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="state">State/Province: <span class="required">*</span></label>
+                    <input type="text" id="state" name="state" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="zip">Zip/Postal Code: <span class="required">*</span></label>
+                    <input type="text" id="zip" name="zip" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="country">Country <span class="required">*</span></label>
+                    <select id="country" name="country" required>
+                        <option value="">- Select -</option>
+                        <option>United States</option>
+                        <option>Canada</option>
+                        <option>United Kingdom</option>
+                        <option>Australia</option>
+                        <option>India</option>
+
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email: <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmEmail">Confirm Email: <span class="required">*</span></label>
+                    <input type="email" id="confirmEmail" name="confirmEmail" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone: <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone" required />
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="message">Your Message:</label>
+                    <textarea id="message" name="message"></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="ad-panel" id="adPanel">
+        <img id="adImage" src="" alt="Ad">
+        <h3 id="adTitle"></h3>
+    </div>
+    <script>
+        const ads = [
+            {
+                image: "images/ignited.png",
+                title: "Ignited's Sandbox"
+            },
+            {
+                image: "images/spiderman.png",
+                title: "Spider-Man: Brand New Day"
+            }
+        ];
+
+        let currentAd = 0;
+
+        const panel = document.getElementById("adPanel");
+        const adImage = document.getElementById("adImage");
+        const adTitle = document.getElementById("adTitle");
+
+        function showAd(index) {
+            adImage.src = ads[index].image;
+            adTitle.textContent = ads[index].title;
+        }
+
+        function cycleAds() {
+            showAd(currentAd);
+
+            panel.classList.add("show");
+
+            setTimeout(() => {
+                panel.classList.remove("show");
+            }, 4000);
+
+            currentAd = (currentAd + 1) % ads.length;
+        }
+
+        cycleAds();
+        setInterval(cycleAds, 6000);
+    </script>
+</body>
+
+</html>

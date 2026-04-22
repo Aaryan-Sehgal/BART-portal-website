@@ -1,5 +1,5 @@
 .env
-node_mudules/
+node_modules/
 __pycache__/
 *.log
 .DS_Store
@@ -9,3 +9,5 @@ dist/
 build/
 *.pyc
 *.pyo
+package.json
+package-lock.json

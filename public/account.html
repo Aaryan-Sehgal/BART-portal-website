@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BartNET</title>
-</head>
-    <link rel="stylesheet" href="styles.css">
-    <nav style="display: flex; justify-content: space-between; padding: 16px; background-color: black; color: white;">
-        <a href="index.html">BartNET</a>
-        <a href="departures.html">Real-Time Departures</a>
-        <a href="contact.html">Contact</a>
-        <a href="about.html">About Us</a>
-        
-        <div class="account">
-            <a href="account.html">
-                <img src="images/profile.png">
-                <span>My Account / Sign In</span>
+        <meta charset="UTF-8">
+        <title>BARTNet | MyAccount</title>
+        <link rel="stylesheet" href="./css/main.css">
+        <link rel="stylesheet" href="./css/index.css">
+        <link rel="icon" type="image/x-icon" href="./images/favicon.png">
+    </head>
+    <body>
+        <nav>
+            <a id="nav-home" href="./index.html"><img src="images/site-icon.png" alt="BartNET logo"></a>
+            <ul>
+                <li><a href="departures.html" class="nav-button">Real-Time Departures</a></li>
+                <li><a href="barty.html" class="nav-button">BARTy</a></li>
+                <li><a href="about.html" class="nav-button">About</a></li>
+                <li><a href="contact.html" class="nav-button">Contact</a></li>
+            </ul>
+            <a id="nav-account" href="./account.html">
+                <img id="profile-image" src="./images/default-profile.webp" alt="profile">
+                <span id="profile-text">Account / Sign In</span>
             </a>
-        </div>
-
-    </nav>
+        </nav>
     </header>
 
     <div style="display: flex; height: 100vh;">
@@ -34,11 +35,13 @@
                    <label for="password" style="font-weight:bold; display:block; margin:20px 0 5px;">Password</label>
             <input type="password" id="password" name="password"
                    style="width: 100%; padding:10px; font-size:16px; border:1px solid #ccc; border-radius:4px;">
-            <button style="margin-top:20px; padding:10px 20px; font-size:16px; background:#000; color:#fff; border:none; border-radius:4px; cursor:pointer;">Sign In</button>
+            <button id = "login-btn" style="margin-top:20px; padding:10px 20px; font-size:16px; background:#000; color:#fff; border:none; border-radius:4px; cursor:pointer;">Sign In</button>
             <br></br>
-            <input type="button" value="Create a new account" id="account" name="account"
-                   style="margin-top:20px; padding:10px 20px; font-size:16px; background:#fff; color:#000; border:1px solid #ccc; border-radius:4px; cursor:pointer;">
-                   <a href="barty.html" 
+            <a href="signup.html"
+            style="display:inline-block; margin-top:20px; padding:10px 20px; font-size:16px; background:#fff; color:#000; border:1px solid #ccc; border-radius:4px; cursor:pointer; text-decoration:none;">
+            Create a new account
+            </a>
+                <a href="barty.html" 
                     style="position:fixed; bottom:20px; right:20px; background:#007bff; color:#fff; padding:12px 20px; 
                     border-radius:25px; text-decoration:none; font-weight:bold; font-family:Arial, sans-serif;
                     box-shadow: 0 4px 6px rgba(0,0,0,0.2);">Chat with BARTy!
@@ -47,4 +50,36 @@
     </div>
 </div>
 </body>
+<script>
+  const loginBtn = document.getElementById('login-btn');
+
+  loginBtn.addEventListener('click', async () => {
+    const email = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    try {
+      const response = await fetch('/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem('user', JSON.stringify(data.user));
+        alert(data.message);
+        window.location.href = 'index.html';
+      } else {
+        alert(data.error);
+      }
+
+    } catch (err) {
+      console.error(err);
+      alert('Something went wrong');
+    }
+  });
+</script>
 </html>

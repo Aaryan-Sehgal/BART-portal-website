@@ -1,18 +1,22 @@
-const { networkInterfaces } = require('os');
-var message = 'CSC-317 node/express app \n'
-         + 'This uses nodeJS, express, and express.static\n'
-         + 'to \"serve\" the files in the ./public/ dir!\n';
+const express = require('express');
+const path = require('path');
 
-var express = require('express');
-var app = express();
-var port = 3001;
+const app = express();
+const port = 3001;
 
-var path = require('path');
-var StaticDirectory = path.join(__dirname, 'public');
+app.use(express.json());
+
+const StaticDirectory = path.join(__dirname, 'public');
 app.use(express.static(StaticDirectory));
 
-app.listen(port, () => {
-    console.log(`Listening on http://127.0.0.1:${port}/`);
+const userRoutes = require('./routes/users');
+app.use('/', userRoutes);
+
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).send('Server error');
 });
 
-console.log(message);
+app.listen(port, () => {
+  console.log(`Listening on http://127.0.0.1:${port}/`);
+});

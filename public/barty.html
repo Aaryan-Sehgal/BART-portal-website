@@ -2,31 +2,48 @@
 <html lang="en">
 
 <head>
-        <meta charset="UTF-8">
-        <title>BARTNet | BARTy</title>
-        <link rel="stylesheet" href="./css/main.css">
-        <link rel="stylesheet" href="./css/index.css">
-        <link rel="icon" type="image/x-icon" href="./images/favicon.png">
-    </head>
-    <body>
-        <nav>
-            <a id="nav-home" href="./index.html"><img src="images/site-icon.png" alt="BartNET logo"></a>
-            <ul>
-                <li><a href="departures.html" class="nav-button">Real-Time Departures</a></li>
-                <li><a href="barty.html" class="nav-button">BARTy</a></li>
-                <li><a href="about.html" class="nav-button">About</a></li>
-                <li><a href="contact.html" class="nav-button">Contact</a></li>
-            </ul>
-            <a id="nav-account" href="./account.html">
-                <img id="profile-image" src="./images/default-profile.webp" alt="profile">
-                <span id="profile-text">Account / Sign In</span>
-            </a>
-        </nav>
+    <meta charset="UTF-8">
+    <title>BARTNet | BARTy</title>
+
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="icon" type="image/x-icon" href="./images/favicon.png">
 </head>
 
 <body>
-<h1>CHAT WITH BARTy!</h1>
-<h1>Coming Soon...</h1>
+
+    <nav>
+        <a id="nav-home" href="./index.html">
+            <img src="images/site-icon.png" alt="BartNET logo">
+        </a>
+
+        <ul>
+            <li><a href="departures.html" class="nav-button">Real-Time Departures</a></li>
+            <li><a href="barty.html" class="nav-button">BARTy</a></li>
+            <li><a href="about.html" class="nav-button">About</a></li>
+            <li><a href="contact.html" class="nav-button">Contact</a></li>
+        </ul>
+
+        <a id="nav-account" href="./account.html">
+            <img id="profile-image" src="./images/default-profile.webp" alt="profile">
+            <span id="profile-text">Account / Sign In</span>
+        </a>
+    </nav>
+
+    <h1>CLICK BELOW TO...</h1>
+
+    <button id="chat-button" onclick="openChat()">
+        ... CHAT WITH BARTY!
+    </button>
+
+    <img src="./images/cutebarty.png" alt="Barty the chatbot" id="barty-image">
+
+    <div id="chat-window" style="display:none;">
+        <div id="chat-box"></div>
+        <div id="chat-options"></div>
+    </div>
+    <script src="barty.js"></script>
+
 </body>
 
 </html>

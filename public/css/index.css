@@ -33,3 +33,22 @@
     font-weight: 600;
     font-style: italic;
 }
+
+#chat-button {
+    font-size: 20px;
+    padding: 15px 30px;
+}
+
+#chat-window {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 400px;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 1000;
+}

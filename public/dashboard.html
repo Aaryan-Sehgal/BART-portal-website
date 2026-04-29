@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BARTNet | Dashboard</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="icon" type="image/x-icon" href="./images/favicon.png">
+</head>
+<body>
+    <nav>
+        <a id="nav-home" href="./index.html"><img src="images/site-icon.png" alt="BartNET logo"></a>
+        <ul>
+            <li><a href="departures.html" class="nav-button">Real-Time Departures</a></li>
+            <li><a href="barty.html" class="nav-button">BARTy</a></li>
+            <li><a href="about.html" class="nav-button">About</a></li>
+            <li><a href="contact.html" class="nav-button">Contact</a></li>
+        </ul>
+        <a id="nav-account" href="./dashboard.html">
+            <img id="profile-image" src="./images/default-profile.webp" alt="profile">
+            <span id="profile-text">Dashboard</span>
+        </a>
+    </nav>
+
+    <div>
+        <div>
+            <h1 id="welcome-message">Welcome!</h1>
+            <p><strong>Username:</strong> <span id="user-name"></span></p>
+            <p><strong>Email:</strong> <span id="user-email"></span></p>
+            <button id="logout-btn" class="logout-btn">Log Out</button>
+        </div>
+    </div>
+
+    <script>
+      const savedUser = JSON.parse(localStorage.getItem('user'));
+
+      if (!savedUser) {
+        alert('Please sign in first');
+        window.location.href = 'account.html';
+      } else {
+        document.getElementById('welcome-message').textContent = `Welcome, ${savedUser.username}!`;
+        document.getElementById('user-name').textContent = savedUser.username;
+        document.getElementById('user-email').textContent = savedUser.email;
+        document.getElementById('profile-text').textContent = savedUser.username;
+      }
+
+      document.getElementById('logout-btn').addEventListener('click', () => {
+        localStorage.removeItem('user');
+        alert('Logged out successfully');
+        window.location.href = 'account.html';
+      });
+    </script>
+</body>
+</html>

@@ -140,7 +140,7 @@
 
 <body>
     <div class="form-wrapper">
-        <form class="contact-form">
+        <form class="contact-form" id="contact-form">
             <h2>Contact Us</h2>
 
             <div class="form-grid">
@@ -186,15 +186,7 @@
 
                 <div class="form-group">
                     <label for="country">Country <span class="required">*</span></label>
-                    <select id="country" name="country" required>
-                        <option value="">- Select -</option>
-                        <option>United States</option>
-                        <option>Canada</option>
-                        <option>United Kingdom</option>
-                        <option>Australia</option>
-                        <option>India</option>
-
-                    </select>
+                    <input type="text" id="country" name="country" required />
                 </div>
 
                 <div class="form-group">
@@ -215,6 +207,9 @@
                 <div class="form-group full-width">
                     <label for="message">Your Message:</label>
                     <textarea id="message" name="message"></textarea>
+                </div>
+                <div class="form-group full-width">
+                    <button type="submit" class="submit-btn">Send Message</button>
                 </div>
             </div>
         </form>
@@ -260,6 +255,67 @@
 
         cycleAds();
         setInterval(cycleAds, 6000);
+    </script>
+    <script>
+        const contactForm = document.getElementById('contact-form');
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const company = document.getElementById('company').value;
+            const address1 = document.getElementById('address1').value;
+            const address2 = document.getElementById('address2').value;
+            const city = document.getElementById('city').value;
+            const state = document.getElementById('state').value;
+            const zip = document.getElementById('zip').value;
+            const country = document.getElementById('country').value;
+            const email = document.getElementById('email').value;
+            const confirmEmail = document.getElementById('confirmEmail').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+
+            if (email !== confirmEmail) {
+                alert('Emails do not match');
+                return;
+            }
+
+            try {
+                const response = await fetch('/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        firstName,
+                        lastName,
+                        company,
+                        address1,
+                        address2,
+                        city,
+                        state,
+                        zip,
+                        country,
+                        email,
+                        phone,
+                        message
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert(data.message);
+                    contactForm.reset();
+                } else {
+                    alert(data.error || 'Failed to submit contact form');
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Something went wrong');
+            }
+        });
     </script>
 </body>
 

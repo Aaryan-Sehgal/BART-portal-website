@@ -12,6 +12,9 @@ app.use(express.static(StaticDirectory));
 const userRoutes = require('./routes/users');
 app.use('/', userRoutes);
 
+const contactRoutes = require('./routes/contact');
+app.use('/', contactRoutes);
+
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(500).send('Server error');

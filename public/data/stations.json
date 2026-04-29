@@ -1,0 +1,212 @@
+[
+    {
+        "abbr": "12TH",
+        "name": "12th St/Oakland City Center",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "16TH",
+        "name": "16th St Mission",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "19TH",
+        "name": "19th St/Oakland",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "24TH",
+        "name": "24th St Mission",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "ANTC",
+        "name": "Antioch",
+        "platforms": [1]
+    },
+    {
+        "abbr": "ASHB",
+        "name": "Ashby",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "BALB",
+        "name": "Balboa Park",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "BAYF",
+        "name": "Bay Fair",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "BERY",
+        "name": "Berryessa/North San José",
+        "platforms": [1]
+    },
+    {
+        "abbr": "CAST",
+        "name": "Castro Valley",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "CIVC",
+        "name": "Civic Center/UN Plaza",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "COLM",
+        "name": "Colma",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "COLS",
+        "name": "Coliseum",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "CONC",
+        "name": "Concord",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "DALY",
+        "name": "Daly City",
+        "platforms": [1, 2, 3]
+    },
+    {
+        "abbr": "DUBL",
+        "name": "Dublin/Pleasanton",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "EMBR",
+        "name": "Embarcadero",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "FRMT",
+        "name": "Fremont",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "FTVL",
+        "name": "Fruitvale",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "GLEN",
+        "name": "Glen Park",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "LAFY",
+        "name": "Lafayette",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "LAKE",
+        "name": "Lake Merritt",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "MCAR",
+        "name": "MacArthur",
+        "platforms": [1, 2, 3]
+    },
+    {
+        "abbr": "MLBR",
+        "name": "Millbrae",
+        "platforms": [1, 2, 3]
+    },
+    {
+        "abbr": "MONT",
+        "name": "Montgomery St",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "NBRK",
+        "name": "North Berkeley",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "NCON",
+        "name": "North Concord/Martinez",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "OAKL",
+        "name": "Oakland International Airport",
+        "platforms": [1]
+    },
+    {
+        "abbr": "ORIN",
+        "name": "Orinda",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "PITT",
+        "name": "Pittsburg/Bay Point",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "PLZA",
+        "name": "El Cerrito Plaza",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "POWL",
+        "name": "Powell St",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "RICH",
+        "name": "Richmond",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "ROCK",
+        "name": "Rockridge",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "SANL",
+        "name": "San Leandro",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "SBRN",
+        "name": "South San Francisco",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "SFIA",
+        "name": "San Francisco International Airport",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "SHAY",
+        "name": "South Hayward",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "UCTY",
+        "name": "Union City",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "WARM",
+        "name": "Warm Springs/South Fremont",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "WDUB",
+        "name": "West Dublin/Pleasanton",
+        "platforms": [1, 2]
+    },
+    {
+        "abbr": "WOAK",
+        "name": "West Oakland",
+        "platforms": [1, 2]
+    }
+]

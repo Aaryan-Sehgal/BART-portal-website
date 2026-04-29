@@ -26,22 +26,28 @@
                 <div id="platform-display-top"></div>
                 <div id="platform-display-screen">
                     <div id="platform-display-departures">
-                        <div class="departure-row">
-                            <div class="departure-text">
-                                <span class="departure-destination">OAK / Dublin</span>
-                                <span class="departure-minutes">2 <span class="departure-minutes-label">min</span></span>
-                            </div>
-                            <div class="departure-cars">
-                                <div class="car-box blue-line"></div><div class="car-box blue-line"></div><div class="car-box blue-line"></div><div class="car-box blue-line"></div><div class="car-box blue-line"></div><div class="car-box blue-line"></div><div class="car-box blue-line"></div><div class="car-box blue-line"></div><div class="car-box blue-line"></div><div class="car-box blue-line"></div>
-                            </div>
+                        <div id="departure-pages">
+                            <div class="departure-page-box"></div>
+                            <div class="departure-page-box active"></div>
                         </div>
-                         <div class="departure-row">
-                            <div class="departure-text">
-                                <span class="departure-destination">Antioch</span>
-                                <span class="departure-minutes">5 <span class="departure-minutes-label">min</span></span>
+                        <div id="departure-rows">
+                            <div class="departure-row">
+                                <div class="departure-text">
+                                    <span class="departure-destination">OAK / Dublin</span>
+                                    <span class="departure-minutes">2 <span class="departure-minutes-label">min</span></span>
+                                </div>
+                                <div class="departure-cars">
+                                    <div class="car-box blue-line"></div><div class="car-box blue-line"></div><div class="car-box blue-line"></div><div class="car-box blue-line"></div><div class="car-box blue-line"></div><div class="car-box blue-line"></div><div class="car-box blue-line"></div><div class="car-box blue-line"></div><div class="car-box blue-line"></div><div class="car-box blue-line"></div>
+                                </div>
                             </div>
-                            <div class="departure-cars">
-                                <div class="car-box yellow-line"></div><div class="car-box yellow-line"></div><div class="car-box yellow-line"></div><div class="car-box yellow-line"></div><div class="car-box yellow-line"></div><div class="car-box yellow-line"></div><div class="car-box yellow-line"></div><div class="car-box yellow-line"></div><div class="car-box yellow-line"></div><div class="car-box yellow-line"></div>
+                            <div class="departure-row">
+                                <div class="departure-text">
+                                    <span class="departure-destination">Antioch</span>
+                                    <span class="departure-minutes">5 <span class="departure-minutes-label">min</span></span>
+                                </div>
+                                <div class="departure-cars">
+                                    <div class="car-box yellow-line"></div><div class="car-box yellow-line"></div><div class="car-box yellow-line"></div><div class="car-box yellow-line"></div><div class="car-box yellow-line"></div><div class="car-box yellow-line"></div><div class="car-box yellow-line"></div><div class="car-box yellow-line"></div><div class="car-box yellow-line"></div><div class="car-box yellow-line"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -57,6 +63,12 @@
                 </div>
                 <div id="platform-display-label">PLATFORM 2</div>
             </div>
+            <div id="departure-controls">
+                <select id="departure-station-selection"></select>
+                <select id="departure-platform-selection"></select>
+            </div>
         </main>
+        
+        <script type="module" src="./scripts/departures.js"></script>
     </body>
 </html>

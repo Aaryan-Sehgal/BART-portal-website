@@ -1,7 +1,9 @@
 main {
+    gap: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     height: 1000px;
 }
 
@@ -36,7 +38,31 @@ main {
     flex: 6;
     background-color: rgb(21, 52, 83);
     background: radial-gradient(circle at 50% 50%, rgb(30, 69, 108), rgb(21, 52, 83) 75%, rgb(21, 52, 83) 100%);
-    padding: 25px 15px;
+    padding: 15px 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* > DEPARTURE PAGES */
+#departure-pages {
+    display: flex;
+    gap: 5px;
+    justify-content: flex-end;
+}
+
+.departure-page-box {
+    width: 15px;
+    height: 15px;
+    border: 2px solid rgb(255, 255, 255);
+    box-sizing: border-box;
+}
+
+.departure-page-box.active {
+    background-color: rgb(255, 255, 255);
+}
+
+/* > DEPARTURE ROWS */
+#departure-rows {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -78,6 +104,14 @@ main {
     width: 40px;
     height: 10px;
     background-color: rgb(255, 255, 255);
+}
+
+/* DEPARTURE CONTROLS */
+#departure-controls select {
+    cursor: pointer;
+    padding: 10px 15px;
+    font-size: 14pt;
+    font-weight: 600;
 }
 
 /* > PLATFORM DIVIDER */
@@ -138,4 +172,12 @@ main {
 
 .car-box.orange-line {
     background-color: #fca716;
+}
+
+/* DEPARTURE CONTROLS */
+#departure-controls {
+    gap: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }

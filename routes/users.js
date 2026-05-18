@@ -1,4 +1,5 @@
 const express = require('express');
+const bcrypt = require('bcrypt');
 const pool = require('../db/pool');
 const router = express.Router();
 
@@ -6,13 +7,21 @@ router.post('/signup', async (req, res, next) => {
   const { username, email, password } = req.body;
 
   try {
+    const passwordHash = await bcrypt.hash(password, 10);
+
     const result = await pool.query(
       'INSERT INTO users (username, email, password_hash) VALUES ($1, $2, $3) RETURNING user_id, username, email',
-      [username, email, password]
+      [username, email, passwordHash]
     );
 
     console.log('New user:', result.rows[0]);
+
     res.json(result.rows[0]);
+
+    res.json({
+      message: 'Account created successfully'
+    });
+
   } catch (err) {
     next(err);
   }
@@ -33,7 +42,9 @@ router.post('/login', async (req, res, next) => {
 
     const user = result.rows[0];
 
-    if (user.password_hash !== password) {
+    const passwordMatches = await bcrypt.compare(password, user.password_hash);
+
+    if (!passwordMatches) {
       return res.status(401).json({ error: 'Invalid password' });
     }
 

@@ -1,0 +1,107 @@
+.dashboard-container {
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.dashboard-card {
+    width: 90%;
+    max-width: 1200px;
+    min-height: 700px;
+
+    padding: 40px;
+
+    border: 1px solid #ccc;
+    border-radius: 10px;
+
+    background: #f9f9f9;
+}
+
+.dashboard-card h1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.dashboard-card p {
+    font-size: 18px;
+    margin: 12px 0;
+}
+
+.dashboard-section {
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px solid #ddd;
+}
+
+.dashboard-section h2 {
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.edit-row,
+.route-row,
+.station-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.edit-row input,
+.station-row input {
+    width: 300px;
+    padding: 10px;
+    font-size: 15px;
+}
+
+.route-row input {
+    width: 220px;
+    padding: 10px;
+    font-size: 15px;
+}
+
+.small-btn {
+    padding: 9px 14px;
+    font-size: 14px;
+
+    background: black;
+    color: white;
+
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+.small-btn:hover,
+.logout-btn:hover {
+    opacity: 0.9;
+}
+
+#routes-list,
+#stations-list {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+#routes-list li,
+#stations-list li {
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+.logout-btn {
+    margin-top: 35px;
+
+    padding: 12px 22px;
+    font-size: 16px;
+
+    background: black;
+    color: white;
+
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
+}

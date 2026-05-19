@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>BARTNet | Dashboard</title>
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="icon" type="image/x-icon" href="./images/favicon.png">
-</head>
-<body>
+
     <nav>
         <a id="nav-home" href="./index.html"><img src="images/site-icon.png" alt="BartNET logo"></a>
         <ul>
@@ -21,34 +21,218 @@
             <span id="profile-text">Dashboard</span>
         </a>
     </nav>
+    <link rel="stylesheet" href="./css/dashboard.css">
 
-    <div>
-        <div>
+</head>
+
+<body>
+
+    <main class="dashboard-container">
+        <div class="dashboard-card">
             <h1 id="welcome-message">Welcome!</h1>
             <p><strong>Username:</strong> <span id="user-name"></span></p>
             <p><strong>Email:</strong> <span id="user-email"></span></p>
+
+            <div class="dashboard-section">
+                <h2>Edit Account</h2>
+            
+                <div class="edit-row">
+                    <input type="email" id="new-email" placeholder="New email">
+                    <button id="update-email-btn" class="small-btn">Update Email</button>
+                </div>
+            
+                <div class="edit-row">
+                    <input type="password" id="new-password" placeholder="New password">
+                    <button id="update-password-btn" class="small-btn">Update Password</button>
+                </div>
+            </div>
+
+
+            <div class="dashboard-section">
+                
+                <h2>Favorite Routes</h2>
+
+                <div class="route-row">
+                    <select id="start-station"></select>
+                    <span>→</span>
+                    <select id="end-station"></select>
+
+                    <button id="add-route-btn" class="small-btn">Add Route</button>
+                </div>
+
+                <ul id="routes-list"></ul>
+            </div>
+
+            <div class="dashboard-section">
+                <h2>Favorite Stations</h2>
+
+                <div class="station-row">
+                    <select id="station-name"></select>
+                    <button id="add-station-btn" class="small-btn">Add Station</button>
+                </div>
+
+                <ul id="stations-list"></ul>
+            </div>
+
             <button id="logout-btn" class="logout-btn">Log Out</button>
         </div>
-    </div>
+    </main>
 
     <script>
-      const savedUser = JSON.parse(localStorage.getItem('user'));
+        const savedUser = JSON.parse(localStorage.getItem('user'));
 
-      if (!savedUser) {
-        alert('Please sign in first');
-        window.location.href = 'account.html';
-      } else {
-        document.getElementById('welcome-message').textContent = `Welcome, ${savedUser.username}!`;
-        document.getElementById('user-name').textContent = savedUser.username;
-        document.getElementById('user-email').textContent = savedUser.email;
-        document.getElementById('profile-text').textContent = savedUser.username;
-      }
+        if (!savedUser) {
+            alert('Please sign in first');
+            window.location.href = 'account.html';
+        } else {
+            document.getElementById('welcome-message').textContent = `Welcome, ${savedUser.username}!`;
+            document.getElementById('user-name').textContent = savedUser.username;
+            document.getElementById('user-email').textContent = savedUser.email;
+            document.getElementById('profile-text').textContent = savedUser.username;
 
-      document.getElementById('logout-btn').addEventListener('click', () => {
-        localStorage.removeItem('user');
-        alert('Logged out successfully');
-        window.location.href = 'account.html';
-      });
+            loadStationDropdowns();
+            loadFavoriteRoutes();
+            loadFavoriteStations();
+        }
+
+        async function loadStationDropdowns() {
+                const response = await fetch('./data/stations.json');
+                const stations = await response.json();
+
+                const startSelect = document.getElementById('start-station');
+                const endSelect = document.getElementById('end-station');
+                const stationSelect = document.getElementById('station-name');
+
+                startSelect.innerHTML = '<option value="">Start station</option>';
+                endSelect.innerHTML = '<option value="">End station</option>';
+                stationSelect.innerHTML = '<option value="">Favorite station</option>';
+
+                stations.forEach(station => {
+                    const optionText = station.name;
+
+                    startSelect.innerHTML += `<option value="${optionText}">${optionText}</option>`;
+                    endSelect.innerHTML += `<option value="${optionText}">${optionText}</option>`;
+                    stationSelect.innerHTML += `<option value="${optionText}">${optionText}</option>`;
+                });
+            }
+
+        document.getElementById('update-email-btn').addEventListener('click', async () => {
+            const newEmail = document.getElementById('new-email').value;
+
+            const response = await fetch(`/users/${savedUser.user_id}/email`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: newEmail })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                localStorage.setItem('user', JSON.stringify(data.user));
+                alert(data.message);
+                location.reload();
+            } else {
+                alert(data.error || 'Failed to update email');
+            }
+        });
+
+        document.getElementById('update-password-btn').addEventListener('click', async () => {
+            const newPassword = document.getElementById('new-password').value;
+
+            const response = await fetch(`/users/${savedUser.user_id}/password`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ password: newPassword })
+            });
+
+            const data = await response.json();
+            alert(data.message || 'Password updated');
+        });
+
+        document.getElementById('add-route-btn').addEventListener('click', async () => {
+            const start_station = document.getElementById('start-station').value;
+            const end_station = document.getElementById('end-station').value;
+
+            const response = await fetch('/favorite-routes', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    user_id: savedUser.user_id,
+                    start_station,
+                    end_station
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert(data.message);
+                document.getElementById('start-station').value = '';
+                document.getElementById('end-station').value = '';
+                loadFavoriteRoutes();
+            } else {
+                alert(data.error || 'Failed to add route');
+            }
+        });
+
+        async function loadFavoriteRoutes() {
+            const response = await fetch(`/favorite-routes/${savedUser.user_id}`);
+            const data = await response.json();
+
+            const routesList = document.getElementById('routes-list');
+            routesList.innerHTML = '';
+
+            data.routes.forEach(route => {
+                const li = document.createElement('li');
+                li.textContent = `${route.start_station} → ${route.end_station}`;
+                routesList.appendChild(li);
+            });
+        }
+
+        document.getElementById('add-station-btn').addEventListener('click', async () => {
+            const station_name = document.getElementById('station-name').value;
+
+            const response = await fetch('/favorite-stations', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    user_id: savedUser.user_id,
+                    station_name
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert(data.message);
+                document.getElementById('station-name').value = '';
+                loadFavoriteStations();
+            } else {
+                alert(data.error || 'Failed to add station');
+            }
+        });
+
+        async function loadFavoriteStations() {
+            const response = await fetch(`/favorite-stations/${savedUser.user_id}`);
+            const data = await response.json();
+
+            const stationsList = document.getElementById('stations-list');
+            stationsList.innerHTML = '';
+
+            data.stations.forEach(station => {
+                const li = document.createElement('li');
+                li.textContent = station.station_name;
+                stationsList.appendChild(li);
+            });
+        }
+
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            localStorage.removeItem('user');
+            alert('Logged out successfully');
+            window.location.href = 'account.html';
+        });
     </script>
+
 </body>
+
 </html>

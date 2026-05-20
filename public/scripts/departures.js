@@ -6,6 +6,7 @@ let currentDeparturesInterval = null;
 // CONSTANTS
 // > ELEMENTS
 const platformLabel = document.getElementById("platform-display-label");
+const platformAnnouncementsBody = document.getElementById("platform-display-announcements-body");
 
 const departureRows = document.getElementById("departure-rows");
 const departurePages = document.getElementById("departure-pages");
@@ -13,7 +14,7 @@ const departurePages = document.getElementById("departure-pages");
 const departureStationSelect = document.getElementById("departure-station-selection");
 const departurePlatformSelect = document.getElementById("departure-platform-selection");
 
-const BART_API_KEY = "MW9S-E7SL-26DU-VV8V"; // public key: https://www.bart.gov/schedules/developers/api
+const BART_API_KEY = "MW9S-E7SL-26DU-VV8V"; // public key: https://www.bart.gov/schedules/developers/api, will move to private env
 
 // > DATA
 let STATIONS_DATA = [];
@@ -23,6 +24,24 @@ const DEPARTURES_ROTATION_INTERVAL = 5000;
 
 // FUNCTIONS
 // > GETTERS
+async function getAdvisories() {
+  const urlSearchParams = new URLSearchParams({
+    cmd: "bsa", key: BART_API_KEY, json: "y"
+  });
+
+  const url = `https://api.bart.gov/api/bsa.aspx?${urlSearchParams.toString()}`;
+  const response = await fetch(url);
+  const advisoriesData = await response.json();
+
+  if (!response.ok || !advisoriesData.root) {
+    console.error(`Error when fetching from BART API:`, advisoriesData);
+    return null;
+  }
+
+  const advisories = advisoriesData.root.bsa || [];
+  return advisories;
+}
+
 async function getStationEtds(stationCode, platform) {
   // fetch from api
   const urlSearchParams = new URLSearchParams({
@@ -137,6 +156,15 @@ function renderCurrentDepartureRows() {
   renderCurrentDeparturePages();
 }
 
+async function renderAdvisories() {
+  const advisories = await getAdvisories();
+  if (!advisories || advisories.length === 0) {
+    platformAnnouncementsBody.textContent = "NO CURRENT ADVISORIES";
+  } else {
+    platformAnnouncementsBody.textContent = advisories[0].description["#cdata-section"].toUpperCase();
+  }
+}
+
 // > FUNCTIONALITY
 function resetDeparturesInterval() {
   if (currentDeparturesInterval) {
@@ -171,6 +199,7 @@ async function updatePlatformDisplay() {
 
   renderCurrentDepartureRows();
   resetDeparturesInterval();
+  await renderAdvisories();
 }
 
 // > INITIALIZE

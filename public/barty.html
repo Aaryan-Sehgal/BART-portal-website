@@ -32,18 +32,19 @@
 
     <h1>CLICK BELOW TO...</h1>
 
-    <button id="chat-button" onclick="openChat()">
-        ... CHAT WITH BARTY!
+    <button id="chat-button">
+    ... CHAT WITH BARTY!
     </button>
 
     <img src="./images/cutebarty.png" alt="Barty the chatbot" id="barty-image">
 
-    <div id="chat-window" style="display:none;">
-        <div id="chat-box"></div>
-        <div id="chat-options"></div>
+    <div id="chat-window">
+    <div id="chat-overlay"></div>
+    <div id="chat-header">BARTy Assistant</div>
+    <div id="chat-box"></div>
+    <div id="chat-options"></div>
     </div>
-    <script src="barty.js"></script>
+    <script src="./scripts/barty.js"></script>
 
 </body>
-
 </html>
